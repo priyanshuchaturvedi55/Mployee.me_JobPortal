@@ -4,7 +4,7 @@
         "src": "Backend/package.json",
         "use": "@railway/node",
         "config": {
-          "npmVersion": "8.x"  // Match your Node.js version
+          "npmVersion": "8.x"
         }
       }
     ],
