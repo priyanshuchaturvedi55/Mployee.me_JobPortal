@@ -1,8 +1,9 @@
-import express from 'express';
-import { getJobs } from '../controllers/jobController.js';
+import express from "express";
+import { getJobs } from "../controllers/jobController.js";
 
 const router = express.Router();
 
-router.get('/jobs', getJobs);
+// This is correct - no issues here
+router.get("/jobs", getJobs);
 
 export default router;

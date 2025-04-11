@@ -5,7 +5,7 @@ import { HiMiniBuildingOffice } from "react-icons/hi2";
 import { IoBagRemove } from "react-icons/io5";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { MdAccessTime } from "react-icons/md";
-import axios from 'axios';
+import axios from "axios";
 
 const Job = () => {
   const [jobs, setJobs] = useState([]);
@@ -14,12 +14,14 @@ const Job = () => {
 
   const fetchJobs = async () => {
     try {
-      const query = locationFilter ? `?location=${encodeURIComponent(locationFilter)}` : '';
-      const res = await axios.get(`http://localhost:5000/api/jobs${query}`);
+      const query = locationFilter
+        ? `?location=${encodeURIComponent(locationFilter)}`
+        : "";
+      const res = await axios.get(`/api/jobs${query}`);
       setJobs(res.data);
       setSelectedJob(res.data[0] || null);
     } catch (err) {
-      console.error('Error fetching jobs:', err);
+      console.error("Error fetching jobs:", err);
     }
   };
 
@@ -67,7 +69,7 @@ const Job = () => {
               {job.source} — {job.location}
             </p>
             <p className="text-sm text-gray-500 mt-1">
-              {job.description?.slice(0, 70) || 'No description available'}...
+              {job.description?.slice(0, 70) || "No description available"}...
             </p>
             <div className="flex justify-between text-sm text-gray-700 mt-2">
               <span>{job.salary || "From $19 an hour"}</span>
@@ -122,7 +124,8 @@ const Job = () => {
                   {/* Row 1: Employment type & Salary */}
                   <div className="flex items-center gap-20">
                     <span className="flex items-center gap-1">
-                      <IoBagRemove /> {selectedJob.employment_type || "Not specified"}
+                      <IoBagRemove />{" "}
+                      {selectedJob.employment_type || "Not specified"}
                     </span>
                     <span className="flex items-center gap-1">
                       <BsCurrencyDollar />{" "}
@@ -133,32 +136,34 @@ const Job = () => {
                   {/* Row 2: Posted date */}
                   <div>
                     <span className="flex items-center gap-1">
-                      <MdAccessTime /> {selectedJob.postedDateTime || "13 days ago"}
+                      <MdAccessTime />{" "}
+                      {selectedJob.postedDateTime || "13 days ago"}
                     </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {selectedJob.qualifications && selectedJob.qualifications.length > 0 && (
-              <div className="border border-gray-300 rounded-xl p-4 shadow-sm bg-white mt-4">
-                <div className="mt-2">
-                  <h2 className="text-md font-bold text-black mb-2">
-                    Qualifications
-                  </h2>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedJob.qualifications.map((q, i) => (
-                      <span
-                        key={i}
-                        className="bg-gray-200 text-sm text-gray-700 px-3 py-1 rounded-full"
-                      >
-                        {q}
-                      </span>
-                    ))}
+            {selectedJob.qualifications &&
+              selectedJob.qualifications.length > 0 && (
+                <div className="border border-gray-300 rounded-xl p-4 shadow-sm bg-white mt-4">
+                  <div className="mt-2">
+                    <h2 className="text-md font-bold text-black mb-2">
+                      Qualifications
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedJob.qualifications.map((q, i) => (
+                        <span
+                          key={i}
+                          className="bg-gray-200 text-sm text-gray-700 px-3 py-1 rounded-full"
+                        >
+                          {q}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
 
             <div className="border border-gray-300 rounded-xl p-4 shadow-sm bg-white mt-4">
               <div className="mt-2">

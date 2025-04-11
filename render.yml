@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jobportal
+    runtime: node
+    buildCommand: cd job-portal-site && npm install && npm run build && cd ../Backend && npm install
+    startCommand: cd Backend && NODE_ENV=production node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # You'll need to set this manually in Render dashboard
+    healthCheckPath: /api/jobs
