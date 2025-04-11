@@ -8,8 +8,8 @@
       "build": "npm install"     
     },
     "engines": {
-      "node": "18.x"             
-    },
+    "node": "10.8.3"  
+  },
 
   "keywords": [],
   "author": "",
