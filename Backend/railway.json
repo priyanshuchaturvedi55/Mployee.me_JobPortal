@@ -1,6 +1,20 @@
 {
-    "build": {
-      "root": "Backend"
-    }
+    "builds": [
+      {
+        "src": "Backend/package.json",
+        "use": "@railway/node",
+        "config": {
+          "npmVersion": "8.x"  // Match your Node.js version
+        }
+      }
+    ],
+    "routes": [
+      {
+        "handle": "filesystem"
+      },
+      {
+        "src": "/.*",
+        "dest": "/"
+      }
+    ]
   }
-  
